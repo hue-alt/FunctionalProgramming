@@ -65,3 +65,19 @@ roots_polynomial'(a, b, c) =
     let d = sqrt(b^2 - 4 * a * c)
         e = 2 * a
     in ((-b - d) / e, (-b + d) / e)
+
+
+
+collatz :: Int -> Int
+collatz n = if n == 1
+            then 1
+            else if n `mod` 2 == 0
+            then collatz (n `div` 2)
+            else collatz (3 * n + 1)
+
+collatz' :: Int -> Int
+collatz' n
+    | n == 1 = 1
+    | n `mod` 2 == 0 = collatz' (n `div` 2)
+    | otherwise = collatz' (3 * n + 1)
+
